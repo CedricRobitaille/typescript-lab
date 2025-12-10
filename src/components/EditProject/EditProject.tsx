@@ -1,43 +1,35 @@
-import "./NewProject.css"
-
 import { useState } from "react";
 
-type FormData = {
-  name: string,
-  urgency: number,
-  size: number,
-  industry: string,
-  description: string
+type Project = {
+  id: number;
+  name: string;
+  urgency: number;
+  size: number;
+  industry: string;
+  description: string;
+}
+type Props = {
+  project: Project;
+  handleEditProject: (project: Project, e: any) => void
 }
 
-interface Props {
-  handleCreateProject: (data: FormData, e: any) => void
-}
+const EditProject = ({ project, handleEditProject }: Props) => {
+  console.log(project)
 
-const NewProject = ({handleCreateProject}: Props) => {
+  const [formData, setFormData] = useState<Project>(project)
 
-  const [formData, setFormData] = useState<FormData>({
-    name: "",
-    urgency: 0,
-    size: 1,
-    industry: "",
-    description: ""
-  })
 
-  // What kind of data primative is the 'event' keyword under!?!?!?!
-  // Until I figure that out... she'll have to remain a "any"
-  const handleInputChange = (e: any) => {
+  const handleInputChange = (e:any): void => {
     type valType = string | number
     let value: valType = e.target.value
     if (e.target.name === "urgency" || e.target.name === "size") {
       value = Number(value)
     }
-    setFormData({ ...formData, [e.target.name]: value })
+    setFormData({ ...formData, [e.target.name]: e.target.value})
   }
 
-
   return (
-    <form onSubmit={(e) => { handleCreateProject(formData,e) }}>
+    <form onSubmit={(e: any) => { handleEditProject(formData, e) }}>
       <div className="form-split">
         <div className="input-col">
           <label htmlFor="name">Project Name</label>
@@ -48,7 +40,7 @@ const NewProject = ({handleCreateProject}: Props) => {
           <input type="text" name="industry" id="industry" value={formData.industry} onChange={handleInputChange} />
         </div>
       </div>
-      
+
 
       <div className="form-split">
         <div className="input-col">
@@ -71,9 +63,9 @@ const NewProject = ({handleCreateProject}: Props) => {
         <textarea name="description" id="description" value={formData.description} onChange={handleInputChange}></textarea>
       </div>
 
-      <button type="submit">Create project</button>
+      <button type="submit">Save Changes</button>
     </form>
   )
 }
 
-export default NewProject;
+export default EditProject
