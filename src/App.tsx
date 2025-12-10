@@ -24,10 +24,11 @@ function App() {
     setPage(view);
   }
 
-  const handleCreateProject = (project: Project, e: any) => {
+  const handleCreateProject = (project: Project, e: any): void => {
     e.preventDefault();
     setPage("home")
     setProjects(prev => [...prev, project]);
+    console.log(project)
   }
 
   return (

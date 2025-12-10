@@ -3,5 +3,17 @@ form {
   background-color: #333;
   display: flex;
   flex-direction: column;
+  gap: 1.5rem;
+}
+
+.form-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   gap: 1rem;
+}
+
+.input-col {
+  display: flex;
+  flex-direction: column;
+  gap:.5rem;
 }
