@@ -5,7 +5,7 @@ interface Props {
   handlePageChange: (view: string) => void
 }
 
-const views: string[] = ["home", "edit"]
+const views: string[] = ["home", "new"]
 
 const Nav = ({ page, handlePageChange }: Props ) => {
 
