@@ -1,23 +1,20 @@
+import "./Nav.css"
 
-
-interface Page {
-  page: string
+interface Props {
+  page: string,
+  handlePageChange: (view: string) => void
 }
 
 const views: string[] = ["home", "edit"]
 
-const Nav = ({page}: Page) => {
-
-  const handleNavClick = (view: string) => {
-    console.log(view)
-  }
+const Nav = ({ page, handlePageChange }: Props ) => {
 
   return (
     <nav>
       <ul>
         {views.map((view, index) => (
           <li key={index}>
-            <button className={page === view ? "active" : ""} onClick={() => { handleNavClick(view) }}>
+            <button className={page === view ? "active" : ""} onClick={() => { handlePageChange(view) }}>
               {view}
             </button>
           </li>

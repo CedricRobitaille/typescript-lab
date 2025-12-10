@@ -8,7 +8,9 @@ html {
   background-color: #222;
 }
 
-h1, h2, h3, h4, h5, h6, p, label, li, ul, span {
+h1, h2, h3, h4, h5, h6, p, label, li, ul, span, a {
   color: #fff;
   font-family: sans-serif;
+  text-decoration: none;
+  list-style: none;
 }

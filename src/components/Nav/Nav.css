@@ -1,0 +1,27 @@
+nav {
+  padding: .75rem;
+}
+
+nav ul {
+  display: grid;
+  grid-template-columns: 1fr auto;
+}
+
+nav button {
+  border: none;
+  padding: .75rem 1rem;
+  font-size: 1rem;
+  color: #fff;
+  background-color: transparent;
+  text-transform: capitalize;
+  border-radius: 8px
+}
+
+nav .active {
+  background-color: #2e333a;
+}
+
+nav button:hover {
+  background-color: #3c4146;
+  cursor: pointer;
+}
