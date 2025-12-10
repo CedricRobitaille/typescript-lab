@@ -3,6 +3,7 @@ import './App.css'
 
 import Nav from './components/Nav/Nav';
 import Header from './components/Header/Header'
+import ProjectView from './components/ProjectView/ProjectView';
 import NewProject from './components/NewProject/NewProject';
 
 type Views = 'home' | 'edit' | 'new';
@@ -13,7 +14,7 @@ interface Project {
   size: number;
   industry: string;
 }
-type ProjectSchema = [Project]
+type ProjectSchema = Project[]
 
 function App() {
   const [page, setPage] = useState<Views>("home")
@@ -28,7 +29,6 @@ function App() {
     e.preventDefault();
     setPage("home")
     setProjects(prev => [...prev, project]);
-    console.log(project)
   }
 
   return (
@@ -39,7 +39,7 @@ function App() {
         {page === "home" && 
           <>
             <Header title="Fleet Management App" body="Manage your fleet, all in one place!" />
-            <></>
+            <ProjectView projects={projects} />
           </>
         }
 
