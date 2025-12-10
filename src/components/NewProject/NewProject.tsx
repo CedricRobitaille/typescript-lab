@@ -1,3 +1,5 @@
+import "./NewProject.css"
+
 import { useState } from "react";
 
 type FormData = {
@@ -20,10 +22,19 @@ const NewProject = ({handleCreateProject}: Props) => {
     industry: ""
   })
 
+  // What kind of data primative is the 'event' keyword under!?!?!?!
+  // Until I figure that out... she'll have to remain a "any"
+  const handleInputChange = (e: any) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value})
+  }
+
 
   return (
-    <form onSubmit={() => { handleCreateProject(formData) }}>
+    <form onSubmit={(e) => { handleCreateProject(formData,e) }}>
+      <label htmlFor="name">Project Name</label>
+      <input type="text" name="name" id="name" value={formData.name} onChange={handleInputChange}/>
 
+      <button type="submit">Create project</button>
     </form>
   )
 }
